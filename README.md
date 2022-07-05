@@ -1,1 +1,3 @@
-# react 4
+# react app
+
+At the moment app is in building process
