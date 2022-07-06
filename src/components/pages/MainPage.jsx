@@ -5,25 +5,31 @@ const MainPage = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
+  const [result, setResult] = useState('');
 
-  var myData = {
-    weight: weight,
-    height: height,
-    age: age,
-  };
+  function caloriesCounter() {
+    var myData = {
+      weight: weight,
+      height: height,
+      age: age,
+    };
+
+    function caloriesCounterBMR() {
+      let totalCal = 0;
+      totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
+      return totalCal * 1.2;
+    }
+
+    let resultBMR = caloriesCounterBMR();
+    let roundResult = Math.round(resultBMR);
+
+    return roundResult;
+  }
 
   function submitHandler(event) {
     event.preventDefault();
+    setResult(caloriesCounter());
   }
-
-  function caloriesCounterBMR() {
-    let totalCal = 0;
-    totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
-    return totalCal * 1.2;
-  }
-
-  let resultBMR = caloriesCounterBMR();
-  let roundResult = Math.round(resultBMR);
 
   return (
     <div>
@@ -49,9 +55,9 @@ const MainPage = () => {
           onChange={(e) => setAge(e.target.value)}
           value={age}
         />
-        <button>Submit</button>
+        <button>Pateikti</button>
       </form>
-      {roundResult} Calories
+      {result} Calories
     </div>
   );
 };
