@@ -5,6 +5,7 @@ const MainPage = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
+  const [activity, setActivity] = useState('');
   const [result, setResult] = useState('');
 
   function caloriesCounter() {
@@ -17,11 +18,12 @@ const MainPage = () => {
     function caloriesCounterBMR() {
       let totalCal = 0;
       totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
-      return totalCal * 1.2;
+      return totalCal;
     }
 
     let resultBMR = caloriesCounterBMR();
-    let roundResult = Math.round(resultBMR);
+    let resultWithActivity = resultBMR * activity;
+    let roundResult = Math.round(resultWithActivity);
 
     return roundResult;
   }
@@ -29,6 +31,10 @@ const MainPage = () => {
   function submitHandler(event) {
     event.preventDefault();
     setResult(caloriesCounter());
+  }
+
+  function handleChange(event) {
+    setActivity(event.target.value);
   }
 
   return (
@@ -55,6 +61,35 @@ const MainPage = () => {
           onChange={(e) => setAge(e.target.value)}
           value={age}
         />
+        <label for='activity'>Pasirinkite savo aktyvumo lygį :</label>
+        <select
+          name='activity'
+          id='activity'
+          value={activity}
+          onChange={handleChange}
+        >
+          <option value='1'>Jokio aktyvumo (BMR) </option>
+          <option value='1.2'>
+            Sėdimas darbas: šiek tiek arba jokio aktyvumo
+          </option>
+          <option value='1.37522'>
+            Lengvas aktyvumas: treniruotės 1-3 kartus/savaitę
+          </option>
+          <option value='1.46525'>
+            Vidutinis aktyvumas: treniruotės 4-5 kartus/savaitę
+          </option>
+          <option value='1.54984'>
+            Didelis aktyvumas: kasdienės treniruotės arba intensyvios
+            treniruotės 3-4 kartus/savaitę
+          </option>
+          <option value='1.72507'>
+            Labai didelis aktyvumas: intensyvios treniruotės 6-7 kartus/savaitę
+          </option>
+          <option value='1.9'>
+            Ekstra didelis aktyvumas: labai intensyvios treniruotės/fizinis
+            darbas kasdien
+          </option>
+        </select>
         <button>Pateikti</button>
       </form>
       {result} Calories
