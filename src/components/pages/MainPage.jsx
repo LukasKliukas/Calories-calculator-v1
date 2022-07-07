@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import * as S from './MainPage.style';
 
 const MainPage = () => {
   const [weight, setWeight] = useState('');
@@ -38,23 +39,23 @@ const MainPage = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <label htmlFor='weight'>Svoris</label>
+    <S.WrapperDiv>
+      <S.Form onSubmit={submitHandler}>
+        <label htmlFor='weight'>Svoris :</label>
         <input
           type='number'
           id='weight'
           onChange={(e) => setWeight(e.target.value)}
           value={weight}
         />
-        <label htmlFor='height'>Ūgis</label>
+        <label htmlFor='height'>Ūgis :</label>
         <input
           type='number'
           id='height'
           onChange={(e) => setHeight(e.target.value)}
           value={height}
         />
-        <label htmlFor='age'>Amžius</label>
+        <label htmlFor='age'>Amžius :</label>
         <input
           type='number'
           id='age'
@@ -91,9 +92,13 @@ const MainPage = () => {
           </option>
         </select>
         <button>Pateikti</button>
-      </form>
-      {result} Calories
-    </div>
+      </S.Form>
+      <S.CaloriesResultH1>{result} Kalorijos (KCAL) </S.CaloriesResultH1>
+      <S.CaloriesResultH1>
+        {result && Math.round(result * 0.9)} Vidutinis svorio metimas - 0.25
+        kg/savaitę
+      </S.CaloriesResultH1>
+    </S.WrapperDiv>
   );
 };
 
