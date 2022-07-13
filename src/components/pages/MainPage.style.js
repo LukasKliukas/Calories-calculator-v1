@@ -14,3 +14,6 @@ export const WrapperDiv = styled.div`
 export const CaloriesResultH1 = styled.h1`
   text-align: center;
 `;
+export const Button = styled.button`
+  margin: 1rem 0;
+`;

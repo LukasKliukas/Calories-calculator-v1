@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import NumberInput from '../NumberInput/NumberInput';
 import * as S from './MainPage.style';
 
 const MainPage = () => {
@@ -44,28 +45,28 @@ const MainPage = () => {
         Dienos kalorijų normos skaičiuoklė
       </S.CaloriesResultH1>
       <S.Form onSubmit={submitHandler}>
-        <label htmlFor='weight'>Svoris :</label>
-        <input
-          type='number'
+        <NumberInput
           id='weight'
+          labelText='Svoris :'
           onChange={(e) => setWeight(e.target.value)}
           value={weight}
+          placeholder='Įveskite savo svorį'
         />
-        <label htmlFor='height'>Ūgis :</label>
-        <input
-          type='number'
+        <NumberInput
           id='height'
+          labelText='Ūgis :'
           onChange={(e) => setHeight(e.target.value)}
           value={height}
+          placeholder='Įveskite savo ūgį'
         />
-        <label htmlFor='age'>Amžius :</label>
-        <input
-          type='number'
+        <NumberInput
           id='age'
+          labelText='Amžius :'
           onChange={(e) => setAge(e.target.value)}
           value={age}
+          placeholder='Įveskite savo amžių'
         />
-        <label for='activity'>Pasirinkite savo aktyvumo lygį :</label>
+        <label htmlFor='activity'>Pasirinkite savo aktyvumo lygį :</label>
         <select
           name='activity'
           id='activity'
@@ -94,7 +95,7 @@ const MainPage = () => {
             darbas kasdien
           </option>
         </select>
-        <button>Pateikti</button>
+        <S.Button>Pateikti</S.Button>
       </S.Form>
       <S.CaloriesResultH1>
         {result && result + ` Kalorijų (KCAL)`}
