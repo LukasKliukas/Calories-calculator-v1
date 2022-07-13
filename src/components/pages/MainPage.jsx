@@ -40,6 +40,9 @@ const MainPage = () => {
 
   return (
     <S.WrapperDiv>
+      <S.CaloriesResultH1>
+        Dienos kalorijų normos skaičiuoklė
+      </S.CaloriesResultH1>
       <S.Form onSubmit={submitHandler}>
         <label htmlFor='weight'>Svoris :</label>
         <input
@@ -93,10 +96,18 @@ const MainPage = () => {
         </select>
         <button>Pateikti</button>
       </S.Form>
-      <S.CaloriesResultH1>{result} Kalorijos (KCAL) </S.CaloriesResultH1>
       <S.CaloriesResultH1>
-        {result && Math.round(result * 0.9)} Vidutinis svorio metimas - 0.25
-        kg/savaitę
+        {result && result + ` Kalorijų (KCAL)`}
+      </S.CaloriesResultH1>
+      <S.CaloriesResultH1>
+        {result &&
+          Math.round(result * 0.9) +
+            ` (KCAL) Švelnus svorio metimas - 0.25 kg/savaitę`}
+      </S.CaloriesResultH1>
+      <S.CaloriesResultH1>
+        {result &&
+          Math.round(result * 0.8072) +
+            ` (KCAL) Vidutinis/saugus svorio metimas - 0.5 kg/savaitę`}
       </S.CaloriesResultH1>
     </S.WrapperDiv>
   );
