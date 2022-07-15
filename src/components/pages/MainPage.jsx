@@ -20,6 +20,15 @@ const MainPage = () => {
 
     function caloriesCounterBMR() {
       let totalCal = 0;
+
+      // if (gender === male) {
+      //   totalCal =
+      //     10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
+      // } else {
+      //   totalCal =
+      //     10 * myData.weight + 6.25 * myData.height - 5 * myData.age - 161;
+      // }
+
       totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
       return totalCal;
     }
