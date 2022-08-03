@@ -21,15 +21,15 @@ const MainPage = () => {
     function caloriesCounterBMR() {
       let totalCal = 0;
 
-      // if (gender === male) {
-      //   totalCal =
-      //     10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
-      // } else {
-      //   totalCal =
-      //     10 * myData.weight + 6.25 * myData.height - 5 * myData.age - 161;
-      // }
+      if (gender === 'male') {
+        totalCal =
+          10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
+      } else {
+        totalCal =
+          10 * myData.weight + 6.25 * myData.height - 5 * myData.age - 161;
+      }
 
-      totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
+      // totalCal = 10 * myData.weight + 6.25 * myData.height - 5 * myData.age + 5;
       return totalCal;
     }
 
@@ -47,6 +47,9 @@ const MainPage = () => {
 
   function handleChange(event) {
     setActivity(event.target.value);
+  }
+  function handleChangeForGender(event) {
+    setGender(event.target.value);
   }
 
   return (
@@ -104,6 +107,16 @@ const MainPage = () => {
             Ekstra didelis aktyvumas: labai intensyvios treniruotės/fizinis
             darbas kasdien
           </option>
+        </select>
+        <label htmlFor='gender'>Pasirinkite savo lytį :</label>
+        <select
+          name='gender'
+          id='gender'
+          value={gender}
+          onChange={handleChangeForGender}
+        >
+          <option value='male'>Vyras</option>
+          <option value='female'>Moteris</option>
         </select>
         <S.Button>Pateikti</S.Button>
       </S.Form>
