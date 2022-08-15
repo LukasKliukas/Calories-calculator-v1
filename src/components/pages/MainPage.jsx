@@ -9,7 +9,7 @@ const MainPage = () => {
   const [age, setAge] = useState('');
   const [activity, setActivity] = useState('');
   const [result, setResult] = useState('');
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState('male');
 
   function caloriesCounter() {
     var myData = {
